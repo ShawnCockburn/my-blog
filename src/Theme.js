@@ -84,6 +84,11 @@ export const theme = {
           "large": '0px 8px 16px rgba(0, 0, 0, 1)',
           "xlarge": '0px 12px 24px rgba(0, 0, 0, 1)',
         },
+      },
+      "breakpoints": {
+        "xsmall": {
+          "value": 380,
+        }
       }
     },
     "chart": {},

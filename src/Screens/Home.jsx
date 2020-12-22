@@ -1,7 +1,7 @@
 import React from 'react'
-import PostCard from "../Components/PostCard";
 import {
     Box,
+    ResponsiveContext
 } from 'grommet';
 import LatestPost from './Sections/LatestPost';
 import AllPosts from './Sections/AllPosts';
@@ -9,8 +9,12 @@ import AllPosts from './Sections/AllPosts';
 const Home = () => {
     return (
         <Box flex align='center'>
-            <LatestPost/>
-            <AllPosts/>
+            <ResponsiveContext.Consumer>
+                {size => (
+                    size !== "xsmall" ? <LatestPost /> : null
+                )}
+            </ResponsiveContext.Consumer>
+            <AllPosts />
         </Box>
     )
 }
