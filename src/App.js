@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import {
   Box,
-  Button,
-  Collapsible,
   Heading,
   Grommet,
-  Layer,
   ResponsiveContext,
 } from 'grommet';
-import { FormClose, Notification } from 'grommet-icons';
 import { theme } from "./Theme";
+import Toggle from "./Components/Toggle";
+import Home from "./Screens/Home";
 
 
 const AppBar = (props) => (
@@ -25,60 +23,18 @@ const AppBar = (props) => (
 );
 
 const App = () => {
-  const [showSidebar, setShowSidebar] = useState(false);
+  const [darkmode, setDarkmode] = useState(false);
   return (
-    <Grommet theme={theme} themeMode={showSidebar ? "dark" : ""} full>
+    <Grommet theme={theme} themeMode={darkmode ? "dark" : "light"} full>
       <ResponsiveContext.Consumer>
         {size => (
           <Box fill>
             <AppBar>
-              <Heading level='3' margin='none'>My App</Heading>
-              <Button
-                icon={<Notification />}
-                onClick={() => setShowSidebar(!showSidebar)}
-              />
+              <Heading level='3' margin='none'>Blog</Heading>
+              <Toggle reverse label={darkmode ? "Dark Mode" : "Light Mode"} checked={darkmode} onChange={() => setDarkmode(!darkmode)} />
             </AppBar>
             <Box direction='row' flex overflow={{ horizontal: 'hidden' }}>
-              <Box flex align='center' justify='center'>
-                app body
-     </Box>
-              {(!showSidebar || size !== 'small') ? (
-                <Collapsible direction="horizontal" open={showSidebar}>
-                  <Box
-                    flex
-                    width='medium'
-
-                    elevation='small'
-                    align='center'
-                    justify='center'
-                  >
-                    sidebar
-    </Box>
-                </Collapsible>
-              ) : (
-                  <Layer>
-                    <Box
-
-                      tag='header'
-                      justify='end'
-                      align='center'
-                      direction='row'
-                    >
-                      <Button
-                        icon={<FormClose />}
-                        onClick={() => setShowSidebar(false)}
-                      />
-                    </Box>
-                    <Box
-                      fill
-
-                      align='center'
-                      justify='center'
-                    >
-                      sidebar
-     </Box>
-                  </Layer>
-                )}
+              <Home/>
             </Box>
           </Box>
         )}

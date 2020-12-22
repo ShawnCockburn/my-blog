@@ -74,6 +74,16 @@ export const theme = {
       "selected": {
         "background": "selected-background",
         "color": "selected-text"
+      },
+      "elevation": {
+        "dark": {
+          "none": 'none',
+          "xsmall": '0px 2px 2px rgba(0, 0, 0, 1)',
+          "small": '0px 4px 4px rgba(0, 0, 0, 1)',
+          "medium": '0px 6px 8px rgba(0, 0, 0, 1)',
+          "large": '0px 8px 16px rgba(0, 0, 0, 1)',
+          "xlarge": '0px 12px 24px rgba(0, 0, 0, 1)',
+        },
       }
     },
     "chart": {},
