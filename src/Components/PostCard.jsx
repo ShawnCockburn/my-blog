@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useHistory } from "react-router-dom";
 
 import {
     Box,
@@ -45,6 +46,8 @@ const cardSizeValues = {
 
 const PostCard = props => {
 
+    let history = useHistory();
+
     const {
         title,
         description,
@@ -64,11 +67,17 @@ const PostCard = props => {
             cardSize === "medium" ?
                 cardSizeValues.medium :
                 cardSizeValues.large);
-    }, [cardSizeValues, cardSize])
+    }, [cardSize])
 
 
     return (
-        <Card elevation="small" width={cardSizeValue.cardWidth} {...rest}>
+        <Card 
+        elevation="small" 
+        width={cardSizeValue.cardWidth}
+        style={{cursor: "pointer"}}
+        onClick={()=>{history.push("post/testing")}}
+         {...rest} 
+         >
             <Stack anchor="bottom" fill>
                 <CardBody height={cardSizeValue.cardBody}>
                     <Image

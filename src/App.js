@@ -7,7 +7,7 @@ import {
 } from 'grommet';
 import { theme } from "./Theme";
 import Toggle from "./Components/Toggle";
-import Home from "./Screens/Home";
+import Nav from "./Navigation/Nav";
 
 
 const AppBar = (props) => (
@@ -34,7 +34,7 @@ const App = () => {
               <Toggle reverse label={darkmode ? "Dark Mode" : "Light Mode"} checked={darkmode} onChange={() => setDarkmode(!darkmode)} />
             </AppBar>
             <Box direction='row' flex overflow={{ horizontal: 'hidden' }}>
-              <Home/>
+              <Nav/>
             </Box>
           </Box>
         )}

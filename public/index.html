@@ -40,6 +40,21 @@
       -webkit-mask-image: linear-gradient(to top, transparent 5%, black 100%);
       mask-image: linear-gradient(to top, transparent 5%, black 100%);
     }
+
+    .youtube-iframe-container {
+      overflow: hidden;
+      /* 16:9 aspect ratio */
+      padding-top: 56.25%;
+      position: relative;
+    }
+
+    .youtube-iframe {
+      height: 100%;
+      width: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+    }
   </style>
   <title>React App</title>
 </head>
