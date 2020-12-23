@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import {
   Box,
   Heading,
-  Grommet,
-  ResponsiveContext,
+  Grommet
 } from 'grommet';
 import { theme } from "./Theme";
 import Toggle from "./Components/Toggle";
@@ -28,8 +27,6 @@ const App = () => {
   const [darkmode, setDarkmode] = useState(false);
   return (
     <Grommet theme={theme} themeMode={darkmode ? "dark" : "light"} full>
-      <ResponsiveContext.Consumer>
-        {size => (
           <Box fill>
             <AppBar>
                 <Heading level='3' margin='none' onClick={()=>history.push("/")} style={{cursor:"pointer"}}>Blog</Heading>
@@ -39,8 +36,6 @@ const App = () => {
               <Nav />
             </Box>
           </Box>
-        )}
-      </ResponsiveContext.Consumer>
     </Grommet>
   );
 }

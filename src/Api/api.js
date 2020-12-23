@@ -1,4 +1,4 @@
-const url = "http://localhost:4000"
+const url = "https://api-blog.shawncockburn.co.uk"
 
 export const getAllPosts = async () => {
     const target = url + "/posts";

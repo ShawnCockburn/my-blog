@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from "react-router-dom";
+import hdate from "human-date";
 
 import {
     Box,
@@ -49,7 +50,7 @@ const PostCard = props => {
     let history = useHistory();
 
     const {
-        id,
+        _id,
         title,
         description,
         imageURL,
@@ -75,7 +76,7 @@ const PostCard = props => {
         elevation="small" 
         width={cardSizeValue.cardWidth}
         style={{cursor: "pointer"}}
-        onClick={()=>{history.push(`/post/${id}`)}}
+        onClick={()=>{history.push(`/post/${_id}`)}}
          {...rest} 
          >
          <Box>
@@ -98,7 +99,7 @@ const PostCard = props => {
                     pad={{ horizontal: 'small' }}
                 >
                     <Text size={cardSizeValue.headerTextSize}>
-                        {`${author}, ${date}`}
+                        {`${author}, ${hdate.prettyPrint(date)}`}
                     </Text>
                 </CardHeader>
 

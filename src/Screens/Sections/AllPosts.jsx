@@ -1,10 +1,10 @@
-import React, {useState,useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import PostCard from "../../Components/PostCard";
 import {
-    Box, Heading, TextInput, Grid, ResponsiveContext
+    Box, Heading, TextInput, Grid, ResponsiveContext, Keyboard
 } from 'grommet';
 import { Search } from 'grommet-icons';
-import {getAllPosts} from '../../Api/api';
+import { getAllPosts } from '../../Api/api';
 
 // If the size is small, only see 1 column
 // If the size is medium, only see 2 columns
@@ -16,13 +16,47 @@ const columns = {
     xlarge: 4,
 };
 
+const RenderPost = ({ _id, title, description, imageURL, author, date, size }) => (
+    <PostCard
+        key={_id}
+        _id={_id}
+        title={title}
+        description={description}
+        imageURL={imageURL}
+        author={author}
+        date={date}
+        cardSize={size === "xsmall" ? "small" : "medium"}
+    />
+)
+
 const PostGrid = props => {
+    const {
+        searchTags
+    } = props;
+
     const [posts, setPosts] = useState([]);
+
+    //TODO:Improve the search functionality
+    const [filteredPosts, setFilteredPosts] = useState([]);
     useEffect(() =>
-    getAllPosts()
-      .then(fetchedPosts => setPosts(fetchedPosts))
-      .catch(e => console.log(e))
-  );
+        getAllPosts()
+            .then(fetchedPosts => setPosts(fetchedPosts))
+            .catch(e => console.log(e))
+    ,[]);
+
+    useEffect(() => {
+        setFilteredPosts(
+            posts.filter(p=> {
+                const containsTag = p.tags.some(tag => {
+                    return searchTags.some(sTag => {
+                        return sTag.toLowerCase() === tag.toLowerCase();
+                    });
+                })
+                return containsTag;
+            })
+        );
+    }, [posts, searchTags]);
+
     return posts === [] ? (<Heading>Loading</Heading>) : (
         <Box flex direction="row" align='center' justify="center" margin={{ vertical: "small" }} >
             <ResponsiveContext.Consumer>
@@ -36,19 +70,10 @@ const PostGrid = props => {
                         justify="center"
                         responsive
                     >
-                        {posts.map(post => (
-                            <PostCard
-                                key={post.id}
-                                id={post.id}
-                                title={post.title}
-                                description={post.description}
-                                imageURL={post.imageURL}
-                                author={post.author}
-                                date={post.publishedDate}
-                                cardSize={size === "xsmall" ? "small" : "medium"}
-                            // margin={{ horizontal: "small" }}
-                            />
-                        ))}
+                        {/* TODO: fix this search functionality */}
+                        {filteredPosts.length > 0 ? filteredPosts.map(post => (<RenderPost key={post._id} size={size} {...post} />)) :
+                         posts.map(post => (<RenderPost key={post._id} size={size} {...post} />))}
+                        {/* {posts.map(post => (<RenderPost key={post._id} size={size} {...post} />))} */}
                     </Grid>
                 )}
             </ResponsiveContext.Consumer>
@@ -57,6 +82,13 @@ const PostGrid = props => {
 };
 
 const AllPosts = () => {
+    const [searchText, setSearchText] = useState("");
+    const [searchTags, setSearchTags] = useState([])
+
+    const updateTags = () => {
+        setSearchTags(searchText.split(" "));
+    };
+
     return (
         <section>
             <Box flex align='center' justify="center" margin={{ vertical: "medium" }}>
@@ -64,10 +96,12 @@ const AllPosts = () => {
                     All Posts
                 </Heading>
                 <Box width={{ max: "90%", width: "medium" }} gap="medium" elevation="small" round="xsmall">
-                    <TextInput plain type="search" icon={<Search />} placeholder="Search ..." reverse size="small" />
+                    <Keyboard onEnter={updateTags}>
+                        <TextInput plain type="search" icon={<Search onClick={updateTags} />} placeholder="Search ..." reverse size="small" value={searchText} onChange={({ target: { value } }) => setSearchText(value)} />
+                    </Keyboard>
                 </Box>
             </Box>
-            <PostGrid />
+            <PostGrid searchTags={searchTags} />
         </section>
     )
 }

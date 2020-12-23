@@ -14,7 +14,7 @@ const LatestPost = () => {
         getFeaturedPost()
             .then(fetchedPost => setPost(fetchedPost))
             .catch(e => console.log(e))
-    );
+    ,[]);
 
     return post?(
         <section>
@@ -22,13 +22,13 @@ const LatestPost = () => {
                 {size => (
                     <Box flex align='center' justify="center" margin={{ vertical: "medium" }}>
                         <PostCard
-                            key={post.id}
-                            id={post.id}
+                            key={post._id}
+                            _id={post._id}
                             title={post.title}
                             description={post.description}
                             imageURL={post.imageURL}
                             author={post.author}
-                            date={post.publishedDate}
+                            date={post.date}
                             cardSize={size === "small" || size === "xsmall" ? "medium" : "large"}
                         />
                     </Box>

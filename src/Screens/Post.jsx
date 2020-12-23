@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react'
 import BlogMarkdown from './Sections/BlogMarkdown';
 import {getPost} from '../Api/api';
 import FadeInBox from '../Components/FadeInBox';
+import hdate from "human-date";
+
 
 const Post = props => {
 
@@ -16,7 +18,7 @@ const Post = props => {
     getPost(postID)
       .then(fetchedPost => setPost(fetchedPost))
       .catch(e => console.log(e))
-  );
+  ,[postID]);
 
     return !post ? (<></>) :
         (
@@ -25,7 +27,7 @@ const Post = props => {
                     <Box margin={{ vertical: "4rem" }} align="center">
                         <Heading level="2">{post.title}</Heading>
                         <Text size="xsmall">
-                            {`${post.author} ${post.publishedDate}`}
+                            {`${post.author} ${hdate.prettyPrint(post.date)}`}
                         </Text>
                     </Box>
                     <BlogMarkdown children={post.content} pad={{ vertical: "xlarge" }}/>
