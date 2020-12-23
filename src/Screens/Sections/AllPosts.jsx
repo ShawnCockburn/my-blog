@@ -1,10 +1,10 @@
-import React from 'react'
+import React, {useState,useEffect} from 'react'
 import PostCard from "../../Components/PostCard";
 import {
     Box, Heading, TextInput, Grid, ResponsiveContext
 } from 'grommet';
 import { Search } from 'grommet-icons';
-import { allPosts } from '../../testdata';
+import {getAllPosts} from '../../Api/api';
 
 // If the size is small, only see 1 column
 // If the size is medium, only see 2 columns
@@ -17,22 +17,29 @@ const columns = {
 };
 
 const PostGrid = props => {
-    return (
-        <Box flex direction="row" align='center' justify="center" margin={{ vertical: "medium" }} fill>
+    const [posts, setPosts] = useState([]);
+    useEffect(() =>
+    getAllPosts()
+      .then(fetchedPosts => setPosts(fetchedPosts))
+      .catch(e => console.log(e))
+  );
+    return posts === [] ? (<Heading>Loading</Heading>) : (
+        <Box flex direction="row" align='center' justify="center" margin={{ vertical: "small" }} >
             <ResponsiveContext.Consumer>
                 {size => (
                     <Grid
                         columns={{
                             count: columns[size],
-                            size: 'auto',
+                            size: "auto",
                         }}
                         gap="small"
-                        fill
                         justify="center"
+                        responsive
                     >
-                        {allPosts.map(post => (
+                        {posts.map(post => (
                             <PostCard
-                                key={post.key}
+                                key={post.id}
+                                id={post.id}
                                 title={post.title}
                                 description={post.description}
                                 imageURL={post.imageURL}

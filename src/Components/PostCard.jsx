@@ -49,12 +49,12 @@ const PostCard = props => {
     let history = useHistory();
 
     const {
+        id,
         title,
         description,
         imageURL,
         date,
         author,
-        link,
         cardSize = "small",
         ...rest
     } = props;
@@ -75,9 +75,10 @@ const PostCard = props => {
         elevation="small" 
         width={cardSizeValue.cardWidth}
         style={{cursor: "pointer"}}
-        onClick={()=>{history.push("post/testing")}}
+        onClick={()=>{history.push(`/post/${id}`)}}
          {...rest} 
          >
+         <Box>
             <Stack anchor="bottom" fill>
                 <CardBody height={cardSizeValue.cardBody}>
                     <Image
@@ -91,8 +92,8 @@ const PostCard = props => {
                 <CardHeader
                     // background={`linear-gradient(0deg, ${background} 0%, ${background} 10%, rgba(0,0,0,0) 100%)`} //this is the old way of grad on image
                     width={cardSizeValue.cardWidth}
-                    height={cardSizeValue.cardHeader}
-                    justify={cardSizeValue.textBoxTextLength !== 0 ? "end": "center"}
+                    height={{max:"small"}}
+                    justify={cardSizeValue.textBoxTextLength !== 0 ? cardSizeValue.textBoxTextLength === 450 ? "end": "start": "center"}
                     align="end"
                     pad={{ horizontal: 'small' }}
                 >
@@ -102,6 +103,7 @@ const PostCard = props => {
                 </CardHeader>
 
             </Stack>
+            </Box>
             <Box pad={{ horizontal: 'medium' }} responsive={false} height={cardSizeValue.textBox}
             align={cardSizeValue.textBoxTextLength !== 0 ? "start": "center"}>
                 <Heading level="3" margin={{ vertical: 'medium' }}>

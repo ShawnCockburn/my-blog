@@ -1,21 +1,19 @@
 import React from 'react'
-import {
-    Box,
-    ResponsiveContext
-} from 'grommet';
+import { ResponsiveContext } from 'grommet';
 import LatestPost from './Sections/LatestPost';
 import AllPosts from './Sections/AllPosts';
+import FadeInBox from '../Components/FadeInBox';
 
 const Home = () => {
     return (
-        <Box flex align='center'>
+        <FadeInBox flex align='center' >
             <ResponsiveContext.Consumer>
                 {size => (
                     size !== "xsmall" ? <LatestPost /> : null
                 )}
             </ResponsiveContext.Consumer>
             <AllPosts />
-        </Box>
+        </FadeInBox>
     )
 }
 

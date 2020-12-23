@@ -1,13 +1,14 @@
-import { Box, Heading } from 'grommet'
+import { Heading } from 'grommet'
 import React from 'react'
+import FadeInBox from '../Components/FadeInBox'
 
 const NoMatch = () => {
     return (
-        <Box flex fill justify="center" align="center">
+        <FadeInBox flex fill justify="center" align="center">
             <Heading>
                 404
             </Heading>
-        </Box>
+        </FadeInBox>
     )
 }
 

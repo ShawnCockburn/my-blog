@@ -1,15 +1,8 @@
 import { Box, Heading, Text } from 'grommet'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import BlogMarkdown from './Sections/BlogMarkdown';
-
-//test data
-import { newPosts } from '../testdata'
-
-
-const getPost = async () => {
-    //TODO: fetch data from server via the post id in the url
-    return newPosts
-};
+import {getPost} from '../Api/api';
+import FadeInBox from '../Components/FadeInBox';
 
 const Post = props => {
 
@@ -17,13 +10,17 @@ const Post = props => {
         postID
     } = props.match.params;
 
-    const [post, setPost] = useState(undefined);
+    const [post, setPost] = useState(false);
 
-    getPost().then(p => setPost(p));
+    useEffect(() =>
+    getPost(postID)
+      .then(fetchedPost => setPost(fetchedPost))
+      .catch(e => console.log(e))
+  );
 
-    return post === undefined ? (<Heading>Loading...</Heading>) :
+    return !post ? (<></>) :
         (
-            <Box flex align='center'>
+            <FadeInBox flex align='center'>
                 <Box width={{ max: "90%", width: "large" }} align="center">
                     <Box margin={{ vertical: "4rem" }} align="center">
                         <Heading level="2">{post.title}</Heading>
@@ -33,7 +30,7 @@ const Post = props => {
                     </Box>
                     <BlogMarkdown children={post.content} pad={{ vertical: "xlarge" }}/>
                 </Box>
-            </Box>
+            </FadeInBox>
         )
 }
 

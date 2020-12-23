@@ -1,28 +1,41 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PostCard from "../../Components/PostCard";
 import {
     Box,
     ResponsiveContext
 } from 'grommet';
+import {getFeaturedPost} from '../../Api/api';
 
 const LatestPost = () => {
-    return (
+
+    const [post, setPost] = useState(false);
+
+    useEffect(() =>
+        getFeaturedPost()
+            .then(fetchedPost => setPost(fetchedPost))
+            .catch(e => console.log(e))
+    );
+
+    return post?(
         <section>
             <ResponsiveContext.Consumer>
                 {size => (
                     <Box flex align='center' justify="center" margin={{ vertical: "medium" }}>
-                        <PostCard title="This is a test."
-                            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                            imageURL="https://picsum.photos/800"
-                            author="Shawn Cockburn"
-                            date="December 18, 2020"
-                            cardSize={size === "small" || size === "xsmall"? "medium": "large"}
+                        <PostCard
+                            key={post.id}
+                            id={post.id}
+                            title={post.title}
+                            description={post.description}
+                            imageURL={post.imageURL}
+                            author={post.author}
+                            date={post.publishedDate}
+                            cardSize={size === "small" || size === "xsmall" ? "medium" : "large"}
                         />
                     </Box>
                 )}
             </ResponsiveContext.Consumer>
         </section>
-    )
+    ):(<></>)
 }
 
 export default LatestPost
