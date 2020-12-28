@@ -46,6 +46,7 @@ export const theme = {
           "light": "#CCCCCC"
         },
         "control": "brand",
+        "border": "brand",
         "active-background": "background-contrast",
         "active-text": "text-strong",
         "selected-background": "brand",

@@ -25,7 +25,7 @@ const Post = props => {
     return error? (<NoMatch />) : !post ? (<NoMatch></NoMatch>) :
         (
             <FadeInBox flex align='center'>
-                <Box width={{ max: "90%", width: "large" }} align="center">
+                <Box width={{ max: "90%", width: "large" }}>
                     <Box margin={{ vertical: "4rem" }} align="center">
                         <Heading level="2">{post.title}</Heading>
                         <Text size="xsmall">
