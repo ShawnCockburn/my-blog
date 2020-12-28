@@ -1,6 +1,5 @@
 import firebase from "firebase/app";
-// const url = "https://api-blog.shawncockburn.co.uk";
-const url = "http://localhost:4000";
+const url = "https://api-blog.shawncockburn.co.uk";
 const secureUrl = url + "/secure";
 
 export const getAllPosts = async () => {
