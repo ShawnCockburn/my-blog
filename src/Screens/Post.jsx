@@ -4,6 +4,7 @@ import BlogMarkdown from './Sections/BlogMarkdown';
 import {getPost} from '../Api/api';
 import FadeInBox from '../Components/FadeInBox';
 import hdate from "human-date";
+import NoMatch from "./NoMatch";
 
 
 const Post = props => {
@@ -13,14 +14,15 @@ const Post = props => {
     } = props.match.params;
 
     const [post, setPost] = useState(false);
+    const [error, setError] = useState(false);
 
     useEffect(() =>
     getPost(postID)
       .then(fetchedPost => setPost(fetchedPost))
-      .catch(e => console.log(e))
+      .catch(e => setError(true))
   ,[postID]);
 
-    return !post ? (<></>) :
+    return error? (<NoMatch />) : !post ? (<NoMatch></NoMatch>) :
         (
             <FadeInBox flex align='center'>
                 <Box width={{ max: "90%", width: "large" }} align="center">

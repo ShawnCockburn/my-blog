@@ -1,22 +1,13 @@
 import React from 'react'
-import YoutubeEmbed from '../../Components/YoutubeEmbed';
-import { Box, Markdown} from 'grommet'
+import { Box } from 'grommet'
+import CustomMarkdown from '../../Components/CustomMarkdown';
 
 const BlogMarkdown = ({ children, options, ...rest }) => {
     return (
         <section>
             <Box {...rest}>
-                <Markdown
+                <CustomMarkdown
                     children={children}
-                    options={{
-                        ...{
-                            overrides: {
-                                YoutubeEmbed: {
-                                    component: YoutubeEmbed,
-                                },
-                            },
-                        }, ...options
-                    }}
                 />
             </Box>
         </section>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
     Box,
     Button,
@@ -13,24 +13,35 @@ import {
 import { Redirect } from 'react-router-dom';
 
 const LoginAndRedirect = ({ firebase }) => {
-    const signIn = async ({ email, password }) => {
-        let user
-        try {
-            user = await firebase.auth().signInWithEmailAndPassword(email, password);
-        } catch (error) {
-            console.log(error)
-        }
 
-        console.log(user)
+    const [formErrors, setFormErrors] = useState({
+        email: "",
+        pass: ""
+    })
+
+
+    const signIn = async ({ email, password }) => {
+        try {
+            await firebase.auth().signInWithEmailAndPassword(email, password);
+        } catch ({code, ...rest}) {
+            if (code === "auth/invalid-email") setFormErrors({pass:"",email: "invalid email"})
+            if (code === "auth/user-not-found") setFormErrors({pass:"",email: "user not found"})
+            if (code === "auth/wrong-password") setFormErrors({pass:"wrong password",email: ""})
+        }
     }
 
     return (
         <FadeInBox flex fill justify="center" align="center">
             <Box width="medium">
                 <Form
-                onSubmit={({ value }) => signIn(value)}
+                    onSubmit={({ value }) => signIn(value)}
                 >
-                    <FormField label="Email" name="email" required>
+                    <FormField
+                        label="Email"
+                        name="email"
+                        required
+                        error={formErrors.email}
+                    >
                         <TextInput
                             name="email"
                         />
@@ -39,6 +50,8 @@ const LoginAndRedirect = ({ firebase }) => {
                         label="Password"
                         name="password"
                         htmlFor="password"
+                        error={formErrors.pass}
+                        required
                     >
                         <TextInput name="password" id="password" type="password" />
                     </FormField>
@@ -56,7 +69,7 @@ const Login = () => {
 
     return (
         <FirebaseAuthConsumer>
-            {({ isSignedIn, firebase }) => (isSignedIn? <Redirect to="/"/>: <LoginAndRedirect firebase={firebase}/>)}
+            {({ isSignedIn, firebase }) => (isSignedIn ? <Redirect to="/" /> : <LoginAndRedirect firebase={firebase} />)}
         </FirebaseAuthConsumer>
     )
 }
