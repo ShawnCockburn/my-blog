@@ -22,7 +22,7 @@ const Post = props => {
       .catch(e => setError(true))
   ,[postID]);
 
-    return error? (<NoMatch />) : !post ? (<NoMatch></NoMatch>) :
+    return error? (<NoMatch />) : !post ? (<NoMatch/>) :
         (
             <FadeInBox flex align='center'>
                 <Box width={{ max: "90%", width: "large" }}>

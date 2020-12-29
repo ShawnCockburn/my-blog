@@ -13,11 +13,7 @@ const border = { color: 'brand', size: 'small' };
 
 const EditPost = ({ location: { post } }) => {
 
-    const {
-        _id,
-        date,
-        author
-    } = post
+    const _id = post ? post._id : undefined;
 
     const [content, setContent] = useState(_id ? post.content : "");
     const [title, setTitle] = useState(_id ? post.title : "");
@@ -57,12 +53,16 @@ const EditPost = ({ location: { post } }) => {
             selectedTags,
             visible
         );
+
         let editedData = {
             _id: _id,
         }
+
+        // eslint-disable-next-line
         Object.keys(createdPost).map(key => {
             if (post[key] !== createdPost[key]) editedData[key] = createdPost[key];
         });
+
         console.log(editedData)
         const result = await editPost(editedData) ? { success: true } : { error: true };
         setPosting({ ...posting, ...result });
@@ -146,7 +146,7 @@ const EditPost = ({ location: { post } }) => {
         <Box width="large" fill justify="center" align="center">
             <Box direction="column">
                 <Box margin={{ vertical: "small" }}>
-                    <Button type="submit" label="Post" primary disabled={
+                    <Button type="submit" label={_id ? "Save" : "Post"} primary disabled={
                         (content.length > 0
                             && selectedTags.length > 0
                             && title.length > 0)
