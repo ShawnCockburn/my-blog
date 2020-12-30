@@ -32,7 +32,7 @@ const Post = props => {
                             {`${post.author} ${hdate.prettyPrint(post.date)}`}
                         </Text>
                     </Box>
-                    <BlogMarkdown children={post.content} pad={{ vertical: "xlarge" }}/>
+                    <BlogMarkdown children={post.content} pad={{ vertical: "xlarge" }} width="100%"/>
                 </Box>
             </FadeInBox>
         )
