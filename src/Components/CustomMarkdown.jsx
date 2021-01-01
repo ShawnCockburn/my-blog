@@ -1,6 +1,6 @@
 import React from 'react'
 import YoutubeEmbed from './YoutubeEmbed';
-import { Markdown, Box, Image, Text, Heading } from 'grommet'
+import { Markdown, Box, Image, Text, Heading, Anchor } from 'grommet'
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
@@ -28,6 +28,11 @@ const Img = props => {
                 {...props}
             />
         </Box>
+    )
+}
+const A = props => {
+    return (
+        <Anchor {...props}>{props.children}</Anchor>
     )
 }
 
@@ -100,6 +105,12 @@ const CustomMarkdown = ({ children, options, ...rest }) => {
                                 level: '6',
                             },
                         },
+                        a: {
+                            component: A,
+                            props: {
+                                color: 'accent-1',
+                            },
+                        }
                     },
                 }, ...options
             }}

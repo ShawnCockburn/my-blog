@@ -45,6 +45,10 @@ export const theme = {
           "dark": "#444444",
           "light": "#CCCCCC"
         },
+        "accent-1":{
+          "dark": "#fff",
+          "light": "#080808"
+        },
         "control": "brand",
         "active-background": "background-contrast",
         "active-text": "text-strong",
