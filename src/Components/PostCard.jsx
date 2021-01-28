@@ -16,10 +16,10 @@ import {
 
 const cardSizeValues = {
     small: {
-        cardWidth: "15rem",
+        cardWidth: { width: "medium", max: "90%" },
         cardBody: "small",
         cardHeader: "small",
-        cardHeaderTextLength: 15,
+        cardHeaderTextLength: 30,
         textBox: "5rem",
         headerTextSize: "0.7rem",
         textBoxTextLength: 0
@@ -72,48 +72,48 @@ const PostCard = props => {
 
 
     return (
-        <Card 
-        elevation="small" 
-        width={cardSizeValue.cardWidth}
-        style={{cursor: "pointer"}}
-        onClick={()=>{history.push(`/post/${_id}`)}}
-         {...rest} 
-         >
-         <Box>
-            <Stack anchor="bottom" fill>
-                <CardBody height={cardSizeValue.cardBody}>
-                    <Image
-                        fit="cover"
-                        src={imageURL}
-                        a11yTitle={title + " image"}
-                        className="card-image"
-                    />
-                </CardBody>
+        <Card
+            elevation="small"
+            width={cardSizeValue.cardWidth}
+            style={{ cursor: "pointer" }}
+            onClick={() => { history.push(`/post/${_id}`) }}
+            {...rest}
+        >
+            <Box>
+                <Stack anchor="bottom" >
+                    <CardBody height={cardSizeValue.cardBody}>
+                        <Image
+                            fit="cover"
+                            src={imageURL}
+                            a11yTitle={title + " image"}
+                            className="card-image"
+                        />
+                    </CardBody>
 
-                <CardHeader
-                    // background={`linear-gradient(0deg, ${background} 0%, ${background} 10%, rgba(0,0,0,0) 100%)`} //this is the old way of grad on image
-                    width={cardSizeValue.cardWidth}
-                    height={{max:"small"}}
-                    justify={cardSizeValue.textBoxTextLength !== 0 ? cardSizeValue.textBoxTextLength === 450 ? "end": "start": "center"}
-                    align="end"
-                    pad={{ horizontal: 'small' }}
-                >
-                    <Text size={cardSizeValue.headerTextSize}>
-                        {`${author}, ${hdate.prettyPrint(date)}`}
-                    </Text>
-                </CardHeader>
+                    <CardHeader
+                        width={cardSizeValue.cardWidth}
+                        height={{ max: "small" }}
+                        justify={cardSizeValue.textBoxTextLength !== 0 ? cardSizeValue.textBoxTextLength === 450 ? "end" : "start" : "center"}
+                        align="end"
+                        pad={{ horizontal: 'small' }}
+                    >
+                    {/* TODO: fix the date auther alignment */}
+                        <Text size={cardSizeValue.headerTextSize}>
+                            {`${author}, ${hdate.prettyPrint(date)}`}
+                        </Text>
+                    </CardHeader>
 
-            </Stack>
+                </Stack>
             </Box>
             <Box pad={{ horizontal: 'medium' }} responsive={false} height={cardSizeValue.textBox}
-            align={cardSizeValue.textBoxTextLength !== 0 ? "start": "center"}>
+                align={cardSizeValue.textBoxTextLength !== 0 ? "start" : "center"}>
                 <Heading level="3" margin={{ vertical: 'medium' }}>
-                {`${title.substring(0, cardSizeValue.cardHeaderTextLength)}${cardSizeValue.cardHeaderTextLength < title.length ? "...": ""}`}
+                    {`${title.substring(0, cardSizeValue.cardHeaderTextLength)}${cardSizeValue.cardHeaderTextLength < title.length ? "..." : ""}`}
                 </Heading>
                 <Paragraph margin={{ top: 'none' }}
                     fill
                 >
-                    {`${description.substring(0, cardSizeValue.textBoxTextLength)} ${cardSizeValue.textBoxTextLength !== 0 ? "...": ""}`}
+                    {`${description.substring(0, cardSizeValue.textBoxTextLength)} ${cardSizeValue.textBoxTextLength !== 0 ? "..." : ""}`}
                 </Paragraph>
             </Box>
         </Card>

@@ -26,6 +26,7 @@ const RenderPost = ({ _id, title, description, imageURL, author, date, size }) =
         author={author}
         date={date}
         cardSize={size === "xsmall" ? "small" : "medium"}
+        // cardSize={"medium"}
     />
 )
 
@@ -58,7 +59,7 @@ const PostGrid = props => {
     }, [posts, searchTags]);
 
     return posts === [] ? (<Heading>Loading</Heading>) : (
-        <Box flex direction="row" align='center' justify="center" margin={{ vertical: "small" }} >
+        <Box flex direction="row" align='center' justify="center" margin={{ vertical: "small" }}>
             <ResponsiveContext.Consumer>
                 {size => (
                     <Grid
