@@ -16,7 +16,7 @@ import {
 
 const cardSizeValues = {
     small: {
-        cardWidth: { width: "medium", max: "90%" },
+        cardWidth: "90%" ,
         cardBody: "small",
         cardHeader: "small",
         cardHeaderTextLength: 30,
@@ -91,13 +91,12 @@ const PostCard = props => {
                     </CardBody>
 
                     <CardHeader
-                        width={cardSizeValue.cardWidth}
+                        width={cardSizeValue.cardWidth === cardSizeValues.small.cardWidth ? "18rem" : cardSizeValue.cardWidth}
                         height={{ max: "small" }}
                         justify={cardSizeValue.textBoxTextLength !== 0 ? cardSizeValue.textBoxTextLength === 450 ? "end" : "start" : "center"}
                         align="end"
                         pad={{ horizontal: 'small' }}
                     >
-                    {/* TODO: fix the date auther alignment */}
                         <Text size={cardSizeValue.headerTextSize}>
                             {`${author}, ${hdate.prettyPrint(date)}`}
                         </Text>

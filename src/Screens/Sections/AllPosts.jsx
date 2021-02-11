@@ -5,6 +5,7 @@ import {
 } from 'grommet';
 import { Search } from 'grommet-icons';
 import { getAllPosts } from '../../Api/api';
+import TopicFilter from '../../Components/TopicFilter';
 
 // If the size is small, only see 1 column
 // If the size is medium, only see 2 columns
@@ -32,7 +33,8 @@ const RenderPost = ({ _id, title, description, imageURL, author, date, size }) =
 
 const PostGrid = props => {
     const {
-        searchTags
+        searchTags,
+        topic
     } = props;
 
     const [posts, setPosts] = useState([]);
@@ -50,13 +52,15 @@ const PostGrid = props => {
             posts.filter(p=> {
                 const containsTag = p.tags.some(tag => {
                     return searchTags.some(sTag => {
-                        return sTag.toLowerCase() === tag.toLowerCase();
+                        return tag.toLowerCase().includes(sTag.toLowerCase());
                     });
                 })
                 return containsTag;
             })
         );
     }, [posts, searchTags]);
+
+    //TODO:addtopic filtering
 
     return posts === [] ? (<Heading>Loading</Heading>) : (
         <Box flex direction="row" align='center' justify="center" margin={{ vertical: "small" }}>
@@ -74,7 +78,6 @@ const PostGrid = props => {
                         {/* TODO: fix this search functionality */}
                         {filteredPosts.length > 0 ? filteredPosts.map(post => (<RenderPost key={post._id} size={size} {...post} />)) :
                          posts.map(post => (<RenderPost key={post._id} size={size} {...post} />))}
-                        {/* {posts.map(post => (<RenderPost key={post._id} size={size} {...post} />))} */}
                     </Grid>
                 )}
             </ResponsiveContext.Consumer>
@@ -84,10 +87,16 @@ const PostGrid = props => {
 
 const AllPosts = () => {
     const [searchText, setSearchText] = useState("");
-    const [searchTags, setSearchTags] = useState([])
+    const [searchTags, setSearchTags] = useState([]);
+
+    const [selectedTopic, setSelectedTopic] = useState(undefined);
 
     const updateTags = () => {
         setSearchTags(searchText.split(" "));
+    };
+
+    const onTopicSelect = topic => {
+        setSelectedTopic(topic);
     };
 
     return (
@@ -102,7 +111,9 @@ const AllPosts = () => {
                     </Keyboard>
                 </Box>
             </Box>
-            <PostGrid searchTags={searchTags} />
+            {/* TODO: FILTERS */}
+            {/* <TopicFilter topics={[]} selectedTopic={selectedTopic} onTopicSelect={onTopicSelect}/> */}
+            <PostGrid searchTags={searchTags} topic={selectedTopic}/>
         </section>
     )
 }
