@@ -17,11 +17,11 @@ Firebase is used only for authentication 🔒 between the front and backend.
 #### This repo is the frontend only
 
 ## npm start 🏁
-will run the project locally but will pull data from my api still,
+Will run the project locally but will pull data from my api still,
 to change this navigate to the [API](src/Api/api.js) file.
 
 ## Firebase Auth 🔒
-to use your own auth navigate to the [API](src/Auth/Auth.jsx) file and follow this [Firebase](https://firebase.google.com/docs/reference/js/firebase.auth.Auth) javascript documentation.
+To use your own auth navigate to the [API](src/Auth/Auth.jsx) file and follow this [Firebase](https://firebase.google.com/docs/reference/js/firebase.auth.Auth) javascript documentation.
 
 ## Final word. 👍
-this project is intended for my use but you are more than welcome to clone it and hack it into whatever you want!
+This project is intended for my use but you are more than welcome to clone it and hack it into whatever you want!
