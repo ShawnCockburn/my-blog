@@ -29,7 +29,7 @@ const App = () => {
     <Grommet theme={theme} themeMode={darkmode ? "dark" : "light"} full>
           <Box fill>
             <AppBar>
-                <Heading level='3' margin='none' onClick={()=>history.push("/")} style={{cursor:"pointer"}}>Blog</Heading>
+                <Heading level='3' margin='none' onClick={()=>history.push("/")} style={{cursor:"pointer"}}>Shawn's Blog</Heading>
               <Toggle reverse label={darkmode ? "Dark Mode" : "Light Mode"} checked={darkmode} onChange={() => setDarkmode(!darkmode)} />
             </AppBar>
             <Box direction='row' flex overflow={{ horizontal: 'hidden' }}>

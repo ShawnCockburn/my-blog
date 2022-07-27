@@ -1,5 +1,5 @@
-import firebase from "firebase/app";
-const url = "https://api-blog.shawncockburn.co.uk";
+const url = window._env.API_BASE_URL;
+
 const secureUrl = url + "/secure";
 
 export const getAllPosts = async () => {
@@ -24,14 +24,12 @@ export const getFeaturedPost = async () => {
 
 const secureFetch = async (endpoint, fetchOptions = {}) => {
     const target = secureUrl + endpoint;
-    const token = await firebase.auth().currentUser.getIdToken();
     // Default options are marked with *
     const options = {
         cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
         credentials: 'same-origin', // include, *same-origin, omit
         headers: {
             'Content-Type': 'application/json',
-            'authtoken': token
         },
         referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
         ...fetchOptions

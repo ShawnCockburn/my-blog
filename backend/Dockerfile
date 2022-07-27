@@ -6,4 +6,4 @@ RUN yarn
 
 RUN yarn build
 
-CMD ["node", "index.js" ]
+CMD ["node", "src/index.js" ]

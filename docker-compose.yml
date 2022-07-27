@@ -1,0 +1,34 @@
+version: "3.9"
+services:
+  frontend:
+    env_file:
+      - .env
+    build: frontend
+    environment:
+      - port=3000
+    ports:
+      - "3000:3000"
+  backend:
+    env_file:
+      - .env
+    build: backend
+    environment:
+      - port=4000
+    ports:
+      - "4000:4000"
+
+# #############################################################################
+
+# database disabled in prod as its intended to be hosted on a separate server/service (e.g. mongodb atlas) https://www.mongodb.com/atlas/database
+# there's no reason you can't use a local database in prod, but it's not recommended
+
+  # database:
+  #   env_file:
+  #     - .env
+  #   image: mongo
+  #   restart: always
+  #   ports:
+  #     - "27017:27017"
+  #   volumes:
+  #     - ./data/db:/data/db
+  #     - ./docker-entrypoint-initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro

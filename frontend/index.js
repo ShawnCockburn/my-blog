@@ -8,6 +8,17 @@ if (envPort !== undefined && isNaN(portNumber))
 const express = require("express");
 const app = express();
 
+const fs = require("fs");
+console.log(process.env);
+
+// ./public/env.js insert API_BASE_URL env variable
+fs.writeFileSync(
+  "./build/env.js",
+  `window._env = {
+    API_BASE_URL: "${process.env.API_BASE_URL}",
+  }`
+);
+
 console.log(__dirname);
 app.use("/", express.static("build"));
 app.get("/", (req, res) => {

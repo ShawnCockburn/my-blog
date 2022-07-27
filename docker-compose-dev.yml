@@ -1,0 +1,28 @@
+version: "3.9"
+services:
+  frontend:
+    env_file:
+      - .env.dev
+    build: frontend
+    environment:
+      - port=3000
+    ports:
+      - "3000:3000"
+  backend:
+    env_file:
+      - .env.dev
+    build: backend
+    environment:
+      - port=4000
+    ports:
+      - "4000:4000"
+  database:
+    env_file:
+      - .env.dev
+    image: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data/db:/data/db
+      - ./docker-entrypoint-initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
