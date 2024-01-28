@@ -1,5 +1,5 @@
 import React from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import "./posts.css";
 
 type Post = {
@@ -26,7 +26,6 @@ function Posts(props: Props) {
   return (
     <div>
       <motion.div
-        layout
         onClick={() => {
           setSearchVisible(true);
         }}
@@ -79,7 +78,6 @@ function Posts(props: Props) {
           <AnimatePresence>
             {searchVisible && (
               <motion.input
-                layout
                 type="text"
                 placeholder="Search"
                 onChange={(e) => {
@@ -110,30 +108,47 @@ function Posts(props: Props) {
         </motion.div>
       </motion.div>
       <section>
-        <ul>
-          {currentPosts.map((post) => (
-            <li>
-              <a href={`/${post.slug}/`}>
-                <img
-                  width={720}
-                  height={360}
-                  src={post?.data?.heroImage}
-                  alt=""
-                />
-                <h4 className="title">{post?.data?.title}</h4>
-                <p className="date">
-                  <time dateTime={post?.data?.pubDate.toISOString()}>
-                    {post?.data?.pubDate.toLocaleDateString("en-us", {
-                      year: "numeric",
-                      month: "short",
-                      day: "numeric",
-                    })}
-                  </time>
-                </p>
-              </a>
-            </li>
-          ))}
-        </ul>
+        <motion.ul>
+          <AnimatePresence>
+            <LayoutGroup>
+              {currentPosts.map((post) => (
+                <motion.li
+                  layout
+                  key={post.id}
+                  transition={{
+                    duration: 0.2,
+                    ease: "easeInOut",
+                  }}
+                  animate={{
+                    opacity: 1,
+                  }}
+                  exit={{
+                    opacity: 0,
+                  }}
+                >
+                  <a href={`/${post.slug}/`}>
+                    <img
+                      width={720}
+                      height={360}
+                      src={post?.data?.heroImage}
+                      alt=""
+                    />
+                    <h4 className="title">{post?.data?.title}</h4>
+                    <p className="date">
+                      <time dateTime={post?.data?.pubDate.toISOString()}>
+                        {post?.data?.pubDate.toLocaleDateString("en-us", {
+                          year: "numeric",
+                          month: "short",
+                          day: "numeric",
+                        })}
+                      </time>
+                    </p>
+                  </a>
+                </motion.li>
+              ))}
+            </LayoutGroup>
+          </AnimatePresence>
+        </motion.ul>
         {currentPosts.length === 0 && (
           <p style={{ textAlign: "center" }}>No posts found</p>
         )}
