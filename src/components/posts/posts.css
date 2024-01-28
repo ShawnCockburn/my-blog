@@ -66,20 +66,10 @@ main {
     }
   }
   .search {
-    cursor: pointer;
     display: flex;
-    align-items: center;
     justify-content: center;
     margin-bottom: 2rem;
-    padding: 0.5rem 1rem;
   }
-
-  .search.visible {
-    cursor: unset;
-    border-radius: 12px;
-    border: 1px solid rgb(var(--gray));
-  }
-
   .search svg {
     fill: rgb(var(--gray));
   }
