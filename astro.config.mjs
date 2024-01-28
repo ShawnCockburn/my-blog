@@ -1,10 +1,11 @@
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
-import preact from '@astrojs/preact';
 import sitemap from '@astrojs/sitemap';
+
+import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://blog.shawncockburn.co.uk',
-	integrations: [mdx(), sitemap(), preact()],
+  site: 'https://blog.shawncockburn.co.uk',
+  integrations: [mdx(), sitemap(), react()]
 });

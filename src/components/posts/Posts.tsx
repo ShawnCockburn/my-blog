@@ -1,4 +1,5 @@
-import React from "preact/compat";
+import React from "react";
+import { motion } from 'framer-motion'
 import "./posts.css";
 
 type Post = {
@@ -24,8 +25,8 @@ function Posts(props: Props) {
   const [searchVisible, setSearchVisible] = React.useState(false);
   return (
     <div>
-      <div
-        class={`search ${searchVisible ? "visible" : null}`}
+      <motion.div
+        className={`search ${searchVisible ? "visible" : null}`}
         onClick={() => {
           setSearchVisible(true);
         }}
@@ -70,7 +71,7 @@ function Posts(props: Props) {
             }}
           />
         )}
-      </div>
+      </motion.div>
       <section>
         <ul>
           {currentPosts.map((post) => (
@@ -82,9 +83,9 @@ function Posts(props: Props) {
                   src={post?.data?.heroImage}
                   alt=""
                 />
-                <h4 class="title">{post?.data?.title}</h4>
-                <p class="date">
-                  <time datetime={post?.data?.pubDate.toISOString()}>
+                <h4 className="title">{post?.data?.title}</h4>
+                <p className="date">
+                  <time dateTime={post?.data?.pubDate.toISOString()}>
                     {post?.data?.pubDate.toLocaleDateString("en-us", {
                       year: "numeric",
                       month: "short",
