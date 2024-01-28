@@ -21,12 +21,18 @@ type Props = {
 
 function Posts(props: Props) {
   const [currentPosts, setCurrentPosts] = React.useState(props.posts);
+  const [searchVisible, setSearchVisible] = React.useState(false);
   return (
     <div>
-      <div class="search">
+      <div
+        class={`search ${searchVisible ? "visible" : null}`}
+        onClick={() => {
+          setSearchVisible(true);
+        }}
+      >
         <svg
-          width="24"
-          height="24"
+          width={searchVisible? "32": "36"}
+          height={searchVisible? "32": "36"}
           clip-rule="evenodd"
           fill-rule="evenodd"
           stroke-linejoin="round"
@@ -39,28 +45,31 @@ function Posts(props: Props) {
             fill-rule="nonzero"
           ></path>
         </svg>
-        <input
-          type="text"
-          placeholder="Search"
-          onChange={(e) => {
-            const search = e.currentTarget.value;
-            setCurrentPosts(
-              props.posts.filter((post) => {
-                const title = post?.data?.title.toLowerCase() || "";
-                const description = post?.data?.description.toLowerCase() || "";
-                const slug = post?.slug?.toLowerCase() || "";
+        {searchVisible && (
+          <input
+            type="text"
+            placeholder="Search"
+            onChange={(e) => {
+              const search = e.currentTarget.value;
+              setCurrentPosts(
+                props.posts.filter((post) => {
+                  const title = post?.data?.title.toLowerCase() || "";
+                  const description =
+                    post?.data?.description.toLowerCase() || "";
+                  const slug = post?.slug?.toLowerCase() || "";
 
-                console.log(search)
+                  console.log(search);
 
-                return (
-                  title.includes(search.toLowerCase()) ||
-                  description.includes(search.toLowerCase()) ||
-                  slug.includes(search.toLowerCase())
-                );
-              })
-            );
-          }}
-        />
+                  return (
+                    title.includes(search.toLowerCase()) ||
+                    description.includes(search.toLowerCase()) ||
+                    slug.includes(search.toLowerCase())
+                  );
+                })
+              );
+            }}
+          />
+        )}
       </div>
       <section>
         <ul>
