@@ -32,6 +32,12 @@
 
 html.dark {
 	background: var(--background);
+  transition: all 0.5s ease;
+}
+
+html {
+  background: var(--background);
+  transition: all 0.5s ease;
 }
 
 body {
