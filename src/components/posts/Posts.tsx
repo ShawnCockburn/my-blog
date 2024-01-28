@@ -53,7 +53,7 @@ function Posts(props: Props) {
             },
           }}
           initial={{
-            border: "none"
+            border: "none",
           }}
           animate={searchVisible ? "visible" : "hidden"}
           transition={{
@@ -134,6 +134,9 @@ function Posts(props: Props) {
             </li>
           ))}
         </ul>
+        {currentPosts.length === 0 && (
+          <p style={{ textAlign: "center" }}>No posts found</p>
+        )}
       </section>
     </div>
   );
