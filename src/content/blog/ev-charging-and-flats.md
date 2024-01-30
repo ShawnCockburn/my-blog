@@ -3,6 +3,7 @@ title: "EV Charging And Flats"
 description: "We need more chargers, especially for people who don't own their own home ⚡️⚡️"
 pubDate: "2021-02-15T10:29:31.946+00:00"
 heroImage: "https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Fbrendarichardson%2Ffiles%2F2019%2F04%2FAdobeStock_79022703-1-1200x800.jpg"
+license: "Proprietary, All Rights Reserved by Shawn Cockburn"
 ---
 
 ### TL;DR

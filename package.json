@@ -1,6 +1,7 @@
 {
   "name": "blog",
   "type": "module",
+  "license": "SEE LICENSE IN ./license",
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",

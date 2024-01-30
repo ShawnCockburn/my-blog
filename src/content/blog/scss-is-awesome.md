@@ -3,6 +3,7 @@ title: "SCSS Is Awesome!"
 description: "I did not know what I was missing out on!"
 pubDate: "2021-02-25T19:07:49.672+00:00"
 heroImage: "https://i.imgur.com/IbtM4S9.jpg"
+license: "Proprietary, All Rights Reserved by Shawn Cockburn"
 ---
 
 I did not know what I was missing out on!

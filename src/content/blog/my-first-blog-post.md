@@ -3,6 +3,7 @@ title: "My First Blog Post?"
 description: "This is my first blog post"
 pubDate: "2020-12-30T13:02:39.111Z"
 heroImage: "https://i.imgur.com/v1Kycjt.jpeg"
+license: "Proprietary, All Rights Reserved by Shawn Cockburn"
 ---
 
 #### TL:DR

@@ -3,6 +3,7 @@ title: 'My Resolution Thoughts'
 description: "My new year's resolution is to be more social... whatever that means."
 pubDate: '2021-01-01T15:40:19.480+00:00'
 heroImage: 'https://images.unsplash.com/photo-1510972527921-ce03766a1cf1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1234&q=80'
+license: "Proprietary, All Rights Reserved by Shawn Cockburn"
 ---
 
 ### TL:DR
