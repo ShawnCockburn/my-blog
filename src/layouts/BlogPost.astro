@@ -119,7 +119,16 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
         <div class="hero-image">
           {
             heroImage && (
-              <img width={1020} height={510} src={heroImage} alt="" />
+              <img
+              height="auto"
+              width="960px"
+              style={{
+                aspectRatio: "2 / 1",
+                maxWidth: 960,
+                objectFit: "cover",
+                overflow: "hidden",
+              }}
+              src={heroImage} alt="" />
             )
           }
         </div>

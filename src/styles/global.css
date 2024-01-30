@@ -141,6 +141,10 @@ hr {
   }
 }
 
+.youtube-container {
+  border-radius: 8px;
+}
+
 .sr-only {
   border: 0;
   padding: 0;
