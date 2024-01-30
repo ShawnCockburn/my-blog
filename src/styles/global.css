@@ -1,27 +1,41 @@
 :root {
-  --accent: #2337ff;
-  --accent-dark: #000d8a;
-  --black: 15, 18, 25;
-  --gray: 96, 115, 159;
-  --gray-light: 229, 233, 240;
-  --gray-dark: 34, 41, 57;
-  --background: #fff;
-  --gray-gradient: rgba(var(--gray-light), 50%), var(--background);
-  --box-shadow: 0 2px 6px rgba(var(--gray), 25%),
-    0 8px 24px rgba(var(--gray), 33%), 0 16px 32px rgba(var(--gray), 33%);
+  --accent-rgb-raw: 116, 140, 171;
+  --accent: rgb(var(--accent-rgb-raw));
+  --accent-dark-rgb-raw: 0, 13, 138;
+  --accent-dark: rgb(var(--accent-dark-rgb-raw));
+  --black-rgb-raw: 15, 18, 25;
+  --black: rgb(var(--black-rgb-raw));
+  --gray-rgb-raw: 96, 115, 159;
+  --gray: rgb(var(--gray-rgb-raw));
+  --gray-light-rgb-raw: 229, 233, 240;
+  --gray-light: rgb(var(--gray-light-rgb-raw));
+  --gray-dark-rgb-raw: 34, 41, 57;
+  --gray-dark: rgb(var(--gray-dark-rgb-raw));
+  --background-rgb-raw: 255, 255, 255;
+  --background: rgb(var(--background-rgb-raw));
+  --gray-gradient: rgba(var(--gray-light-rgb-raw), 50%), var(--background);
+  --box-shadow: 0 2px 6px rgba(var(--gray-dark-rgb-raw), 25%),
+    0 8px 24px rgba(var(--gray-dark-rgb-raw), 33%), 0 16px 32px rgba(var(--gray-dark-rgb-raw), 33%);
 }
 
 :root.dark {
-  --accent: #ff9d00;
-  --accent-dark: #ff9d00;
-  --black: 255, 255, 255;
-  --gray: 255, 255, 255;
-  --gray-light: 34, 41, 57;
-  --gray-dark: 255, 255, 255;
-  --background: #303030;
-  --gray-gradient: rgba(var(--gray-light), 50%), var(--background);
-  --box-shadow: 0 2px 6px rgba(var(--gray), 25%),
-	0 8px 24px rgba(var(--gray), 33%), 0 16px 32px rgba(var(--gray), 33%);
+  --accent-rgb-raw: 239, 131, 84;
+  --accent: rgb(var(--accent-rgb-raw));
+  --accent-dark-rgb-raw: 239, 131, 84;
+  --accent-dark: rgb(var(--accent-dark-rgb-raw));
+  --black-rgb-raw: 255, 255, 255;
+  --black: rgb(var(--black-rgb-raw));
+  --gray-rgb-raw: 215, 215, 215;
+  --gray: rgb(var(--gray-rgb-raw));
+  --gray-light-rgb-raw: 191, 192, 192;
+  --gray-light: rgb(var(--gray-light-rgb-raw));
+  --gray-dark-rgb-raw: 255, 255, 255;
+  --gray-dark: rgb(var(--gray-dark-rgb-raw));
+  --background-rgb-raw: 45, 49, 66;
+  --background: rgb(var(--background-rgb-raw));
+  --gray-gradient: rgba(var(--gray-light-rgb-raw), 50%), var(--background);
+  --box-shadow: 0 2px 6px rgba(var(--gray-dark-rgb-raw), 25%),
+    0 8px 24px rgba(var(--gray-dark-rgb-raw), 33%), 0 16px 32px rgba(var(--gray-dark-rgb-raw), 33%);
 }
 
 html.dark {
@@ -43,7 +57,7 @@ body {
   /* background-size: 100% 600px; */
   word-wrap: break-word;
   overflow-wrap: break-word;
-  color: rgb(var(--gray-dark));
+  color: var(--gray-dark);
   font-size: 20px;
   line-height: 1.7;
 }
@@ -61,7 +75,7 @@ h5,
 h6 {
   font-family: "Montserrat", sans-serif;
   margin: 0 0 0.5rem 0;
-  color: rgb(var(--black));
+  color: var(--black);
   line-height: 1.2;
 }
 h1 {
@@ -112,7 +126,7 @@ img {
 }
 code {
   padding: 2px 5px;
-  background-color: rgb(var(--gray-light));
+  background-color: var(--gray-light);
   border-radius: 2px;
 }
 pre {
@@ -130,7 +144,7 @@ blockquote {
 }
 hr {
   border: none;
-  border-top: 1px solid rgb(var(--gray-light));
+  border-top: 1px solid var(--gray-light);
 }
 @media (max-width: 720px) {
   body {
