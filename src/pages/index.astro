@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
-import PostsWithSearch from "../components/Posts";
+import PostsWithSearch from "../components/posts";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 
 const posts = (await getCollection("blog")).sort(
