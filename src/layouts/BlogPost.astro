@@ -102,6 +102,13 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
       .title h1 {
         margin: 0 0 0.5em 0;
       }
+
+      @media (max-width: 620px) {
+        .title h1 {
+          font-size: 2.5em;
+        }
+      }
+
       .date {
         margin-bottom: 0.5em;
         color: var(--gray);
