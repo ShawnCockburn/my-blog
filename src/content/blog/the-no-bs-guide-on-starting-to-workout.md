@@ -37,6 +37,7 @@ You can progress from the home only workouts to this, or just start here.
 I personally do not use an app, but here's a list of apps I have heard good things about:
 - https://www.pushapp.co.uk/
 - https://rpstrength.com/pages/hypertrophy-app
+  
 Do your own research before committing to one.
 
 This option is good for those who want a super easy way to start and are willing to get a gym membership.
@@ -82,6 +83,7 @@ What about when you're not working out...
 ### Nutrition
 It's not the scope of this article to educate you on specific nutrition for your goal, but here's two simple goals for you:
 - Eat more protein, I guarantee you're not eating enough.
+  
 Aim for 120g to 150g of predominantly animal based protein (Meat, milk, eggs, etc...) with a mix of other sources too.
 
 > Note: if you can't eat meat, then make sure you get a high quality vegan protein powder and eat lots of protein containing foods.
@@ -107,6 +109,7 @@ TLDR: most of it is snake oil, here's what matters:
 - Protein powder: high quality whey protein is more than enough. [This is what works for me](https://www.theproteinworks.com/whey-protein-360-extreme).
 - Creatine monohydrate: take 5-10g every day after food. [This is what works for me](https://www.theproteinworks.com/creatine-monohydrate). Buy in bulk, don't be tempted by other forms of creatine; it's just more expensive and does the same thing. 
 - Multivitamins, literally the cheapest multivitamin from your local supermarket will do, take it after food, it absorbs better.
+  
 The best part is they are all optional, take 'em if you need or want them.
 
 Remember, they are supplements, not replacements...
@@ -158,4 +161,4 @@ I probably missed several things, left you with more questions than answers and 
 - **Deload:** a planned reduction in training intensity, volume, or both, usually lasting about a week.  
 - **Callisthenics:** a form of training that uses bodyweight exercises instead of external weights. Examples include push-ups, pull-ups, dips, squats, and planks.  
 
-An extended list is available here: https://obeystrength.com/articles/100-gym-terms-you-need-to-know
+An extended list is available here: [100-gym-terms-you-need-to-know](https://obeystrength.com/articles/100-gym-terms-you-need-to-know)
