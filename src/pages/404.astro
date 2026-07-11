@@ -1,0 +1,84 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import { SITE_TITLE } from "../consts";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={`404 — ${SITE_TITLE}`} description="Page not found." />
+  </head>
+  <body>
+    <div id="bg-glow" aria-hidden="true"></div>
+    <Header />
+    <main>
+      <section class="lost">
+        <p class="tag mono">[page not found]</p>
+        <h1>404</h1>
+        <p class="hint">
+          This page doesn't exist, or it wandered off.
+        </p>
+        <a class="back mono" href="/">← back to the blog</a>
+      </section>
+    </main>
+    <Footer />
+    <style>
+      main {
+        display: grid;
+        place-items: center;
+        min-height: 55svh;
+      }
+      .lost {
+        text-align: center;
+      }
+      .tag {
+        font-size: 0.7rem;
+        letter-spacing: 0.05em;
+        color: var(--muted);
+        margin-bottom: 0.5rem;
+      }
+      h1 {
+        font-size: clamp(5rem, 20vw, 9rem);
+        line-height: 1;
+        margin: 0 0 1rem;
+        background: linear-gradient(100deg, var(--text) 40%, var(--accent) 50%, var(--text) 60%);
+        background-size: 250% 100%;
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        animation: shimmer 7s ease-in-out infinite;
+      }
+      @keyframes shimmer {
+        0%, 100% {
+          background-position: 100% 0;
+        }
+        50% {
+          background-position: 0% 0;
+        }
+      }
+      .hint {
+        color: var(--muted);
+        margin: 0 0 2rem;
+      }
+      .back {
+        font-size: 0.75rem;
+        letter-spacing: 0.05em;
+        color: var(--muted);
+        text-decoration: none;
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 999px;
+        padding: 0.6rem 1.2rem;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        transition: color 0.2s, border-color 0.2s;
+      }
+      .back:hover {
+        color: var(--accent);
+        border-color: var(--accent);
+      }
+    </style>
+  </body>
+</html>

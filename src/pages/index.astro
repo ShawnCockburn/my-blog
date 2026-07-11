@@ -17,6 +17,7 @@ const posts = (await getCollection("blog")).sort(
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
   <body>
+    <div id="bg-glow" aria-hidden="true"></div>
     <Header />
     <main>
       <PostsWithSearch posts={posts} client:load />

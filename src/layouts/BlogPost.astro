@@ -83,15 +83,16 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
       .hero-image img {
         display: block;
         margin: 0 auto;
-        border-radius: 12px;
-        box-shadow: var(--box-shadow);
+        border-radius: 20px;
+        border: 1px solid var(--card-border);
+        box-shadow: var(--card-shadow);
       }
       .prose {
         width: 1000px;
         max-width: calc(100% - 2em);
         margin: auto;
         padding: 1em;
-        color: var(--gray-dark);
+        color: var(--text);
       }
       .title {
         margin-bottom: 1em;
@@ -111,7 +112,10 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 
       .date {
         margin-bottom: 0.5em;
-        color: var(--gray);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.75rem;
+        letter-spacing: 0.05em;
+        color: var(--muted);
       }
       .last-updated-on {
         font-style: italic;
@@ -120,6 +124,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
   </head>
 
   <body>
+    <div id="bg-glow" aria-hidden="true"></div>
     <Header />
     <main>
       <article>
@@ -128,7 +133,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
             heroImage && (
               <img
               height="auto"
-              width="960px"
+              width="960"
               style={{
                 aspectRatio: "2 / 1",
                 maxWidth: 960,

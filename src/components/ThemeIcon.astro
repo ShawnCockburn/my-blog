@@ -7,15 +7,37 @@
 
 <style>
   #themeToggle {
-    border: 0;
-    background: none;
+    width: 2.4rem;
+    height: 2.4rem;
+    display: grid;
+    place-items: center;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 999px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: border-color 0.2s, transform 0.2s;
   }
-  
-  .sun { fill: black; }
+
+  #themeToggle:hover {
+    border-color: var(--card-border-hover);
+    transform: rotate(20deg);
+  }
+
+  #themeToggle:active {
+    transform: rotate(20deg) scale(0.9);
+  }
+
+  #themeToggle svg {
+    width: 1.2rem;
+  }
+
+  .sun { fill: var(--text); }
   .moon { fill: transparent; }
 
   :global(.dark) .sun { fill: transparent; }
-  :global(.dark) .moon { fill: white; }
+  :global(.dark) .moon { fill: var(--text); }
 </style>
 
 <script is:inline>

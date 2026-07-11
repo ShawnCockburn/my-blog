@@ -4,12 +4,9 @@ import ThemeIcon from "./ThemeIcon.astro";
 ---
 
 <header>
-	<nav>
-		<h2><a href="/">{SITE_TITLE}</a></h2>
-		<ThemeIcon />
-	</nav>
-</header>
-	
+  <nav>
+    <h2><a class="mono" href="/">{SITE_TITLE}</a></h2>
+    <ThemeIcon />
   </nav>
 </header>
 <style>
@@ -20,6 +17,7 @@ import ThemeIcon from "./ThemeIcon.astro";
   h2 {
     margin: 0;
     font-size: 1em;
+    letter-spacing: normal;
   }
 
   h2 a,
@@ -27,15 +25,20 @@ import ThemeIcon from "./ThemeIcon.astro";
     text-decoration: none;
   }
   nav {
-	padding-top: 1rem;
+    padding-top: 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
   nav a {
     padding: 1em 0.5em;
-    color: var(--black);
-    border-bottom: 4px solid transparent;
+    color: var(--muted);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
     text-decoration: none;
+    transition: color 0.2s;
+  }
+  nav a:hover {
+    color: var(--text);
   }
 </style>
