@@ -1,5 +1,5 @@
 # node builder
-FROM node:20-alpine as builder
+FROM node:24-alpine as builder
 
 # Copy the source code to the container
 COPY . /app
